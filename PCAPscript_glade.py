@@ -8,4 +8,4 @@ builder.add_from_file("PCAPScript_GUI.glade")
 window = builder.get_object("window1")
 window.show_all()
 
-Gtk.main()
+Gtk.main() 
