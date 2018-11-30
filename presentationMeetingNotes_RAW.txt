@@ -1,0 +1,95 @@
+Recorded Presentation
+	REQUIREMENTS
+	No videos, powerpoint with audios imbedded 
+	FOR EVERY SINGLE SLIDE, embedde some audio into it
+	Need to include a slide number
+	In the bottom left corner we will put the name of the person speaking and their role!
+
+	TIPS
+	1.) Starting at CRC, for How, show 2 CRC cards to help explain and then go over elements. Card 2 will be a collaborative class for card 1. (Digital is expected but we can put a picture of the card on the top right)
+	2.) Go back and forth between the high and low level, so CRC in general to focusing on 1 or 2 cards
+	3.) In contracts, show a contract within the already shown crc cards
+	4.)Before moving to subsystems, inslide between crc and subsystems: Place class collaboration graph (the huge one with all the classes, no subsystems)
+	5.)use that to lead into the discussion of subsystems
+
+	Subsystems
+		For what why and how just show 1 subsystem and, preferably one that has the 2 previous cards.
+		Before moving to protocols you should show a subsystem collaboration graph 
+	Protocols
+		Continue with the same crc cards and contracts (for the consistency)
+		Show a protocol with signatures and preconditions etc
+		Prefer formal, but any kind of presentation is fine. Just ensure that they can unserstand what you are saying
+
+	Tell lead programmer,
+		Since implementation will not be done yet, salamah wants a method of how we are breaking down task and implementation assignments. essentially some sort of schedule on how we will get it to work. Put a responsible part for a subsystem, due date (its fine if they are in the future) and then state the progress as well! Touch on programming languges, ide, etc that we are using
+
+	Integration can be a part of lead programmer or part of V&V.
+		If the lead programmer does it, then we do not need sample integration test but V&V DOES NEED TO DO IT
+		(we will integrate sub 1 and sub2 and then move on)
+
+	For V&V 
+		Talk about testing, what type were doing, difference between blackbox/whitebox, etc
+		Speak in my own words, no copying!!!
+		Definitely wants to see a few blackbox tests
+		MAKE SURE WE EXPLAIN WHY WE USED A SPECIFIC TEST
+		"we are going to show you blackbox testing, the reason we used it is x,y,z and then show him the example"
+		AT LEAST 2 TYPES OF BLACKBOX TESTING AND DEFINITELY 1 WHITEBOX TEST WITH CODE, CFG AND TESTCASES
+		Put in V&V for other things like tracing and spreadsheets, etc (OPTIONAL)
+
+	Team performance
+
+
+
+
+Question Answer Sesssion (In person)
+
+	There will be 4 minutes where we talk about the project with our team
+		'This semester we started off with CRC then blah blah blah'
+		Essentially sum up the experience
+	IMPORTANT: We are gonna come up with a script but whoever gets asked WILL BE RANDOM
+			SO HAVE EVERYONE KNOW THE REVIEW FROM THE SEMESTER (Likely make a script)
+				Put final presentation
+				Put final SCM Document
+				Put Final Design Document
+				and Put current Test plan (whatever we have at that stage)
+
+
+
+TEST PLAN (Salamah Wants this for the Friday the 14th Test thing)
+	1.)UNIT TEST
+		All should have written some code!
+		Everyone should have tested something
+		Every individual should have at LEAST 1 whitebox and blackbox test (NOT JUST V&V)
+		NEVER TEST THE CODE YOU WROTE ()
+	
+	2.)Integration Tests
+		Write Integration Tests for every protocol that we have
+		They must at least touch every method ONCE
+		EVERY METHOD MUST BE USED IN AT LEAST 1 INTEGRATION TESTS
+
+	3.)System Tests
+		When we take 1 function of the system and test using blackbox
+		MUST BE A TABLE (User does this, system does this, go until function completes)
+		Can pick each use case and pick a system test
+		Or go to the demo guideline and come up to a system tests for that
+
+		Explanation of line 2! (done for each point in the demo!)
+			User hovers over file menu, system changes color
+			User clicks file, system displays menu
+			User clicks new, system shows new presentations
+			User double clicks, 
+
+
+Protocol document tomorrow
+Video presentation due wednesday
+Thursday is presentation in person
+A week after that is demo and final test plan
+
+
+
+WE WILL GET HIT FOR AN INCOMPLETE DEMO
+	He'd rather see 70% integrated than 90% done as units
+	for example:50-70% that is integrated is better than 100% as units!!!
+
+
+Sunday at 1pm likely in same classroom
