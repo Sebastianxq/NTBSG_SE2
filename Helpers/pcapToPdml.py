@@ -13,6 +13,7 @@
 #Mind the "\"!
 
 import subprocess
+import xml.etree.ElementTree as ET
 def pcapToPdmlConverter(dissectorPath, pcapPath, workspacePath):
     dissectorPath = "C:\\Program Files\\Wireshark\\tshark.exe"
 
@@ -25,3 +26,10 @@ def pcapToPdmlConverter(dissectorPath, pcapPath, workspacePath):
     pdml = open(finalPath, "wb")
     pdml.write(process.stdout.read())
     pdml.close()
+
+    pdml = open(finalPath, "r")
+    root = ET.fromstring(pdml.read())
+
+    #XML documentation for python
+    #https://docs.python.org/2/library/xml.etree.elementtree.html
+    return root
