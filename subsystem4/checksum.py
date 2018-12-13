@@ -5,26 +5,21 @@
 import sys
 
 class Checksum():
-    # Initializing the class 
-    def __init__(self):
-        self.PacketName = ""
+    # Initializing the class, it needs the packet Name 
+    def __init__(self, packNam):
+        self.PacketName = packNam
         self.FieldName = []
-    # Getting Packet name
-    def getPacketName(self, pn):
-        self.PacketName = pn
-    # Getting add field name
-    def getFieldName(self, fn):
+    # Adding a field name
+    def addFieldName(self, fn):
         self.FieldName.append(fn)
-    # Adding a relationship
-    def addRelationship(self):
-        # do something
+    # Adding a relationship as long as it is not in the list
+    def addRelationship(self, fn):
+        if not fn in self.FieldName:
+            self.addFieldName(self, fn)
 
-    # Removing a relationship
-    def removeRelationship(self):
-        # remove something
-
-    #Determine relationship
-    def detRelationship(self):
-        # calculate calculation
+    # Removing a relationship if it is in the list
+    def removeRelationship(self, fn):
+        for fn in self.FieldName:
+            self.FieldName.remove(fn)
 
                       
