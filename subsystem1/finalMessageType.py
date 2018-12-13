@@ -3,13 +3,13 @@
 class messageType:
 
     #New session object as defined within the srs and sdd
-    def __init__(self, name, color):
+    def __init__(self, name, expression):
         self.name = name
         self.expression = expression
 
     def editName(self,newName):
         #name cannot be blank
-        if newName != "":
+        if newName == "" or newName == " ":
             print "name cannot be blank"
             return false
 
