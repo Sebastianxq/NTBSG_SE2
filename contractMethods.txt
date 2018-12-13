@@ -1,0 +1,29 @@
+Stage 1 Contract Methods
+  9.)Converts PCAP to PDML 
+      convertToPdml(self,dissector, workpath)
+  10.) Manage PDML
+        Constructor for PDML
+  52.)Provide Filter Information
+      Implemented through multiple methods
+        def getName(self)
+        def getExpression(self)
+        def changeName(self,newName)
+        def changeExpression(self, newExpression)
+  6.)Conserve a list of packets
+       Not yet implemented
+  7. Provide MessageType
+      Variables for MessageType can be accessed at any moment
+  16. Store MessageType
+      Constructor for MesssageType
+  25. Provide name of packet and size
+       Not yet implemented
+  27. Provide Size of packet
+      Not yet implemented
+  36. Link Filter information to session
+      self.filterList.append(filter)
+  47.Link PDML information to session
+       def addPDML(self,pdmlObject):
+  48.Link MessageType information to session
+       def addMessageType(self,messageType)
+
+
