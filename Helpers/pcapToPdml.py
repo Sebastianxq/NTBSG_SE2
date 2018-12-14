@@ -37,13 +37,15 @@ def nodeSequenceFromPDML(dissectorPath, pcapPath, workspacePath):
     root = ET.fromstring(pdml.read())
 
     nodeList = []
-
+    srcTarget = []
     for proto in root.iter('proto'):
         tempNode = {
             "name": proto.attrib['name']
         }
         nodeList.append(tempNode)
-    return nodeList
+        srcTarget.append(proto.attrib['name'])
+
+    return srcTarget
 
 def fullInformationFromPDML(dissectorPath, pcapPath, workspacePath):
     pdmlPath = pcapToPdmlConverter(dissectorPath, pcapPath, workspacePath)

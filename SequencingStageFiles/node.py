@@ -1,5 +1,4 @@
 class Node:
-    def __init__(self, nodeID, name, dataDictionary):
+    def __init__(self, nodeID, name):
         self.nodeID = nodeID
         self.nodeName = name
-        self.dataDictionary = dataDictionary

@@ -1,17 +1,17 @@
 #! /usr/bin/env python
 
-# Packet Length Dependency class 
+# Packet Length Dependency class
 
 import sys
 
 class PacketLengthDependency():
-    # Initializing the class 
+    # Initializing the class
     def __init__(self, pn):
         self.PacketName = pn
         self.FieldName = []
         self.FieldLength = []
-    
-    
+
+
 
     # Adding a field name to the list
     def addFieldName(self, fn, flen):
@@ -22,10 +22,10 @@ class PacketLengthDependency():
     def addDependency(self, fn, flen):
         if not fn in self.FieldName:
             self.addFieldName(fn, flen)
-            
+
     # Return packet ld
     def givePN(self):
-        return self.PacketName 
+        return self.PacketName
 
     # Removing a relationship if it is in the list
     def removeDependency(self, fn):
@@ -38,7 +38,7 @@ class PacketLengthDependency():
     def detDependency(self):
         sum = 0
         for x in range(0, len(self.FieldLength)):
-            sum += self.FieldLength[x]
+            sum += len(str(self.FieldLength[x]))
         return sum
 
     # For testing print

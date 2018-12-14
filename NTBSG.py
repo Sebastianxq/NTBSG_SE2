@@ -1,6 +1,7 @@
 import sys
 from Helpers.pcapToPdml import *
 from SequencingStageFiles.stateMachine import StateMachine
+from subsystem4.codeGenController import CodeGenController
 import re
 #sys.argv[1] = dissectorPath
 #sys.argv[2] = pcapPath
@@ -17,5 +18,14 @@ currStateMachine = StateMachine(nodeList)
 result = re.split('\\\\', sys.argv[3])
 resultLength = len(result)
 workspaceFolderName = result[resultLength-2]
+
+codeGenObject = CodeGenController('', 'test.py', 'scapy')
+
+codeGenObject.getPacketNames(nodeList)
+
+codeGenObject.getDictionary(fullInfo)
+
+codeGenObject.generateCode()
+codeGenObject.exportCode()
 
 #print(workspaceFolderName)

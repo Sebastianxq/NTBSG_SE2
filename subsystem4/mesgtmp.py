@@ -3,9 +3,9 @@
 # Message Template
 
 import sys
-from fieldLengthD import FieldLengthDependency 
-from packetLengthD import PacketLengthDependency
-from fieldEquv import FieldEquivelancy
+from .fieldLengthD import FieldLengthDependency
+from .packetLengthD import PacketLengthDependency
+from .fieldEquv import FieldEquivelancy
 
 class MessageTemplate():
     # Initializing the class needs the name, foldername, pathname, and output format
@@ -29,11 +29,11 @@ class MessageTemplate():
         self.TargetFieldLneL = []
         self.Dic = {}
         self.count = 0
-                            
+
     # Getting Field Length Dependancy from controller
     def collectFLD(self, fld):
         self.fieldLD = fld
-        
+
     # Getting Packet Length Dependency
     def collectPLD(self, spld, tpld):
         self.sourcePacketLD = spld
@@ -46,11 +46,11 @@ class MessageTemplate():
         self.sourceFieldLenL = spld.FieldLength
         self.targetFieldList = tpld.FieldName
         self.targetFieldLenL = tpld.FieldLength
-    
+
     # Getting Checksum
     def collectCksm(self, chk):
         self.chksum = chk
-        
+
     # Getting the Field Equivelance
     def collectFE(self, fe):
         self.fieldEQ = fe
@@ -69,8 +69,8 @@ class MessageTemplate():
         self.inc()
         self.Dic[self.count] = ""
         self.inc()
-        
-    
+
+
     # Creating the code into dictionary
     def generateCode(self):
         self.initDic()
@@ -78,7 +78,7 @@ class MessageTemplate():
         tpn = self.targetPacketName
         # create the packets for source as a class
         lin = ""
-        lin = "class SourcePacket(Packet):" 
+        lin = "class SourcePacket(Packet):"
         self.Dic[self.count] = lin
         self.inc()
         self.Dic[self.count] = ""
@@ -89,13 +89,13 @@ class MessageTemplate():
         lin = '\tlen = "%s"' % self.sourcePL
         self.Dic[self.count] = lin
         self.inc()
-        lin = '\tsrc = "127.0.0.1"' 
+        lin = '\tsrc = "127.0.0.1"'
         self.Dic[self.count] = lin
         self.inc()
         lin = '\tdst = "1.1.1.1"'
         self.Dic[self.count] = lin
         self.inc()
-        lin = '\tfields_desc = [ ShortField("%s", %d))' % (self.sourceFieldList[0], self.sourceFieldLenL[0])
+        lin = '\tfields_desc = [ ShortField("%s", "%s"))' % (str(self.sourceFieldList[0]), str(self.sourceFieldLenL[0]))
         self.Dic[self.count] = lin
         self.inc()
         lin = ""
@@ -115,7 +115,7 @@ class MessageTemplate():
         self.inc()
 
         # Code for the target class
-        lin = "class TargetPacket(Packet):" 
+        lin = "class TargetPacket(Packet):"
         self.Dic[self.count] = lin
         self.inc()
         self.Dic[self.count] = ""
@@ -126,13 +126,13 @@ class MessageTemplate():
         lin = '\tlen = "%s"' % self.targetPL
         self.Dic[self.count] = lin
         self.inc()
-        lin = '\tsrc = "1.1.1.1"' 
+        lin = '\tsrc = "1.1.1.1"'
         self.Dic[self.count] = lin
         self.inc()
         lin = '\tdst = "127.0.0.1"'
         self.Dic[self.count] = lin
         self.inc()
-        lin = '\tfields_desc = [ ShortField("%s", %d))' % (self.sourceFieldList[0], self.sourceFieldLenL[0])
+        lin = '\tfields_desc = [ ShortField("%s", "%s"))' % (self.sourceFieldList[0], self.sourceFieldLenL[0])
         self.Dic[self.count] = lin
         self.inc()
         lin = ""
@@ -153,13 +153,13 @@ class MessageTemplate():
 
         # Add all additional fields to source
         for x in range(1, len(self.sourceFieldList)):
-            lin = "SourcePacket.add_ShortFields('%s', %d)" % (self.sourceFieldList[x], self.sourceFieldLenL[x])
+            lin = "SourcePacket.add_ShortFields('%s', '%s')" % (self.sourceFieldList[x], self.sourceFieldLenL[x])
             self.Dic[self.count] = lin
             self.inc()
 
         # Add all additional fields to target
         for x in range(1, len(self.targetFieldList)):
-            lin = "TargetPacket.add_ShortFields('%s', %d)" % (self.targetFieldList[x], self.targetFieldLenL[x])
+            lin = "TargetPacket.add_ShortFields('%s', '%s')" % (self.targetFieldList[x], self.targetFieldLenL[x])
             self.Dic[self.count] = lin
             self.inc()
 
@@ -174,17 +174,17 @@ class MessageTemplate():
     # Return the completed code
     def retCode(self):
         return self.Dic
-        
+
     # Save output code to file
     def codeFile(self):
         if (self.count > 0):
             ind = self.msgTemplateName.find('.py')
             print(ind)
-            fn = self.msgTemplateName 
+            fn = self.msgTemplateName
             if (ind < 0):
                 fn += '.py'
             fn = self.destFolderPath + fn
-            print fn
+            print(fn)
             codeF = open(fn, "w")
             for key, val in self.Dic.items():
                 codeF.write(val)
@@ -198,12 +198,12 @@ class MessageTemplate():
         print("Destination folder name is %s" % self.destFolderName)
         print("Dest folder path is %s " % self.destFolderPath)
         print("Output format is %s " % self.outputFormat)
-        print self.Dic
-    
+        print(self.Dic)
+
     # Test print the dictionary
     def dicPrint(self):
         for key, val in self.Dic.items():
-            print key, " ", val
+            print(key, " ", val)
 
 #mt = MessageTemplate("test.py", "test", "/test/", "scapy")
 #mt.testPrint()

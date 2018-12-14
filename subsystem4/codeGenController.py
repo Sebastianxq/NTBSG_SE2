@@ -3,11 +3,11 @@
 # Class for the controller for the code genration controller
 
 import sys
-from checksum import Checksum
-from fieldLengthD import FieldLengthDependency
-from fieldEquv import FieldEquivelancy
-from packetLengthD import PacketLengthDependency
-from mesgtmp import MessageTemplate
+from .checksum import Checksum
+from .fieldLengthD import FieldLengthDependency
+from .fieldEquv import FieldEquivelancy
+from .packetLengthD import PacketLengthDependency
+from .mesgtmp import MessageTemplate
 
 class CodeGenController():
     # Initializing the class it takes the path, and output format
@@ -32,7 +32,7 @@ class CodeGenController():
         self.setChecksum()
         self.sourcePLD = self.setPLD(self.sourcePN)
         self.targetPLD = self.setPLD(self.targetPN)
-        
+
 
     # Method for obtaining the dictionary
     def getDictionary(self, dic):
@@ -62,31 +62,31 @@ class CodeGenController():
     # Method for setting the field length dependencies
     def setFLD(self, sfn, tfn):
         fieldLd = FieldLengthDependency(sfn, tfn)
-    
+
     # Method for setting the field Equivelancies
     def setFE(self, sfn, smt, tfn, tmt):
         fieldLE = FieldEquivelancy(sfn, smt, tfn, tmt)
-        
-        
+
+
     # Method for generating and holding the code
     def generateCode(self):
         self.MessagTmpl = MessageTemplate(self.DestFileName, self.DestFN, self.DestPath, self.OutputFormat)
         self.MessagTmpl.collectPLD(self.sourcePLD, self.targetPLD)
         self.MessagTmpl.generateCode()
         self.code = self.MessagTmpl.retCode()
-        
-        
+
+
     # Method for creating code file
     def exportCode(self):
         self.MessagTmpl.codeFile()
-        
+
     # Method to print test code
     def testPrint(self):
         self.MessagTmpl.testPrint()
 
 t = CodeGenController("", "test.py", "scapy")
 names = ["source", "target"]
-t.getPacketNames(names)    
+t.getPacketNames(names)
 fdic = {
     "source1": 2,
     "source2": 2

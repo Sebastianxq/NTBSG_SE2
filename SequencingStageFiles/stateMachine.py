@@ -14,7 +14,7 @@ class StateMachine:
         edgeCounter = 0
         prevNode = None
         for node in nodeList:
-            nodeTemp = Node(nodeCounter, node["name"], node)
+            nodeTemp = Node(nodeCounter, node)
             #nodeTemp = {
                 #"name": node["name"],
                 #"index": nodeCounter,
