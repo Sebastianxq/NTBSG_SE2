@@ -9,7 +9,7 @@ To run the program an user needs to first install a few dependencies for it to w
 
 If you do not have those installed, you can remedy this by performing the following (tested only on Windows 10, further steps may be required depending on your OS)
 * <b>Installing msys2</b>: Visit https://www.msys2.org/ and download your compatible executable.
-* <b>Installing pip</b>: Type "pacman -S python2-pip" into a msys2 shell
-* <b>Installing tshark</b>: go to https://www.wireshark.org/#download and download the appropriate executable
-* <b>Installing graphviz</b>: Type "pip install graphviz" into 
-* <b>Installing pydot</b>: Type "pip install pydot" through your command prompt
+* <b>Installing pip</b>: Visit https://pip.pypa.io/en/stable/installing/ and follow the instructions
+* <b>Installing tshark</b>: Visit https://www.wireshark.org/#download and download the appropriate executable
+* <b>Installing graphviz</b>:Visit https://graphviz.gitlab.io/download/ and follow the instructions 
+* <b>Installing pydot</b>: Visit https://pypi.org/project/pydot/ and follow the instructions
