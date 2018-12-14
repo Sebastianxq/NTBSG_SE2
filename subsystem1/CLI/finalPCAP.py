@@ -29,12 +29,26 @@ class PCAP:
         process = subprocess.Popen([dissectorPath, "-r", pcapPath, "-T", "pdml"], stdout=subprocess.PIPE)
         finalPath = workspacePath + "PDMLDoc.pdml"
         pdml = open(finalPath, "wb")
-        print process.stdout.read()
         pdml.write(process.stdout.read())
         pdml.close()
 
         pdml = open(finalPath, "r")
-        root = ET.fromstring(pdml.read())
+        pdmlLine = pdml.read()
+        print pdmlLine
+        root = ET.fromstring(pdmlLine)
+
+        #Reads only the proto lines
+        #import xml.etree.ElementTree as ET
+
+        #for child in root:
+        #    print child.tag, child.attrib
+
+        #protoTest = ET.parse(finalPath)
+        #protoRoot = protoTest.getroot()
+
+        #for field in protoRoot:
+        #    print field.proto
+
 
         #debugging
         #print root
