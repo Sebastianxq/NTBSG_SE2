@@ -38,9 +38,9 @@ def nodeSequenceFromPDML(dissectorPath, pcapPath, workspacePath):
 
     nodeList = []
 
-    for proto in root.iter('proto')
+    for proto in root.iter('proto'):
         tempNode = {
-            "name": proto
+            "name": proto.attrib['name']
         }
         nodeList.append(tempNode)
     return nodeList

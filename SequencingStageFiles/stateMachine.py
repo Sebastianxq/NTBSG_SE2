@@ -1,10 +1,12 @@
-from node import *
-from edge import *
+from .edge import Edge
+from .node import Node
 import pydot
+
+import sys
+sys.path.append('../Helpers/')
+from Helpers import wiresharkValidation
+
 class StateMachine:
-    import sys
-    sys.path.append('../Helpers/')
-    import wiresharkValidation
     def __init__(self, nodeList):
         self.nodeList = []
         self.edgeList = []
@@ -33,7 +35,7 @@ class StateMachine:
         self.renderStateMachine()
 
     def renderStateMachine(self):
-        graph = pydot.Dot(graph_type='graph')
+        graph = pydot.Dot(graph_type='digraph')
         for node in self.nodeList:
             graph.add_node(pydot.Node(node.nodeName))
         for edge in self.edgeList:
