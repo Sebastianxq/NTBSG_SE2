@@ -35,3 +35,14 @@ testSession = Session("test","A session used to showcase CLI functionality")
 testSession.addPDML(pdml)
 testSession.addFilter(testFilter)
 testSession.addMessageType(testMessageType)
+
+#debugging for persistance within object fields
+print "Original filter name is %s." % testFilter.name
+print "Original Message Type %s.\n" % testMessageType.name
+
+testFilter.editName("only ipx")
+testMessageType.editName("testName")
+
+
+print "Modified Filter name is %s." % testFilter.name
+print "Modified Message Type is %s." % testMessageType.name

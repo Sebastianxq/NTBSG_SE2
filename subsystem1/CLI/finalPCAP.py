@@ -2,10 +2,9 @@ import subprocess
 import xml.etree.ElementTree as ET
 import xml.dom.minidom
 
-#need to write down exactly what the session needs to do !!!
+
 class PCAP:
 
-    #creates a new session object that does not yet contain any data enclosed within it
     def __init__(self, name, filepath):
         self.name = name
         self.filepath = filepath
@@ -41,9 +40,9 @@ class PCAP:
         print pdmlLine
 
 
-
-        xml = xml.dom.minidom.parse(finalPath)  # or xml.dom.minidom.parseString(xml_string)
-        pretty = xml.toprettyxml()
+        #cleans up output to allow string manipulaiton, as seen in filtering out proto fields
+        pdml_xml = xml.dom.minidom.parse(finalPath)  # or xml.dom.minidom.parseString(xml_string)
+        pretty = pdml_xml.toprettyxml()
         protoList = list()
         for proto in pretty.split("\n"):
             if "<proto " in proto:
@@ -52,8 +51,6 @@ class PCAP:
 
                 #debugging
                 #print protoField
-
-        #print pretty
 
         #debugging for proto capture
         #print root
