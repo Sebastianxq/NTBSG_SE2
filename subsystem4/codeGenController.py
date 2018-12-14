@@ -9,7 +9,6 @@ from fieldEquv import FieldEquivelancy
 from packetLengthD import PacketLengthDependency
 from mesgtmp import MessageTemplate
 
-
 class CodeGenController():
     # Initializing the class it takes the path, and output format
     def __init__(self, path, fileN, output):
@@ -30,9 +29,9 @@ class CodeGenController():
     def getPacketNames(self, seqInfo):
         self.sourcePN = seqInfo[0]
         self.targetPN = seqInfo[1]
-        self.getChecksum()
-        self.sourcePLD = self.getPLD(self.sourcePN)
-        self.targetPLD = self.getPLD(self.targetPN)
+        self.setChecksum()
+        self.sourcePLD = self.setPLD(self.sourcePN)
+        self.targetPLD = self.setPLD(self.targetPN)
         
 
     # Method for obtaining the dictionary
@@ -43,18 +42,17 @@ class CodeGenController():
         flen = 0
         fn = ""
         for key, val in sourceDic.items():
-            flen = len(value)
+            flen = val
             fn = key
             self.sourcePLD.addFieldName(fn, flen)
         for key, val in targetDic.items():
-            flen = len(value)
+            flen = val
             fn = key
             self.targetPLD.addFieldName(fn, flen)
-
     # Method for setting checksum
     def setChecksum(self):
-        self.sourceChksm = Checksum(sourcePN)
-        self.targetChksm = Checksum(targetPN)
+        self.sourceChksm = Checksum(self.sourcePN)
+        self.targetChksm = Checksum(self.targetPN)
 
     # Method for getting packet length dependency
     def setPLD(self, pn):
@@ -73,7 +71,7 @@ class CodeGenController():
     # Method for generating and holding the code
     def generateCode(self):
         self.MessagTmpl = MessageTemplate(self.DestFileName, self.DestFN, self.DestPath, self.OutputFormat)
-        self.MessagTmpl.collectPLD(self.sourcePN, self.targetPN)
+        self.MessagTmpl.collectPLD(self.sourcePLD, self.targetPLD)
         self.MessagTmpl.generateCode()
         self.code = self.MessagTmpl.retCode()
         
@@ -82,5 +80,25 @@ class CodeGenController():
     def exportCode(self):
         self.MessagTmpl.codeFile()
         
+    # Method to print test code
+    def testPrint(self):
+        self.MessagTmpl.testPrint()
 
-    
+t = CodeGenController("", "test.py", "scapy")
+names = ["source", "target"]
+t.getPacketNames(names)    
+fdic = {
+    "source1": 2,
+    "source2": 2
+}
+tdic = {
+    "target1": 2,
+    "target2": 3
+}
+dic = {
+    "source":fdic,
+    "target":tdic
+}
+t.getDictionary(dic)
+t.generateCode()
+t.exportCode()

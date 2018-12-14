@@ -10,6 +10,8 @@ class PacketLengthDependency():
         self.PacketName = pn
         self.FieldName = []
         self.FieldLength = []
+    
+    
 
     # Adding a field name to the list
     def addFieldName(self, fn, flen):
@@ -20,8 +22,10 @@ class PacketLengthDependency():
     def addDependency(self, fn, flen):
         if not fn in self.FieldName:
             self.addFieldName(fn, flen)
-            print("Really")
-        print("tried to add")
+            
+    # Return packet ld
+    def givePN(self):
+        return self.PacketName 
 
     # Removing a relationship if it is in the list
     def removeDependency(self, fn):
@@ -44,13 +48,13 @@ class PacketLengthDependency():
         print(self.FieldLength)
         print(self.detDependency())
 
-pl = PacketLengthDependency("test")
-pl.testPrint()
-pl.addDependency("123", 3)
-pl.addDependency("234", 1)
-pl.addDependency("455", 3)
-pl.testPrint()
-pl.removeDependency("no")
-pl.testPrint()
-pl.removeDependency("123")
-pl.testPrint()
+#pl = PacketLengthDependency("test")
+#pl.testPrint()
+#pl.addDependency("123", 3)
+#pl.addDependency("234", 1)
+#pl.addDependency("455", 3)
+#pl.testPrint()
+#pl.removeDependency("no")
+#pl.testPrint()
+#pl.removeDependency("123")
+#pl.testPrint()

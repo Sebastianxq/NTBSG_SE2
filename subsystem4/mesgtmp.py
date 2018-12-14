@@ -29,11 +29,6 @@ class MessageTemplate():
         self.TargetFieldLneL = []
         self.Dic = {}
         self.count = 0
-
-    # Get instance data
-    def __eq__(self, other):
-        if isinrance(other, str):
-            return self._data == other
                             
     # Getting Field Length Dependancy from controller
     def collectFLD(self, fld):
@@ -210,17 +205,17 @@ class MessageTemplate():
         for key, val in self.Dic.items():
             print key, " ", val
 
-mt = MessageTemplate("test.py", "test", "/test/", "scapy")
-mt.testPrint()
-fl = FieldLengthDependency("source", "target")
-fl.addSourceLen(2)
-fl.addTargetLen(4)
-mt.collectFLD(fl)
-source = PacketLengthDependency("source")
-source.addDependency("123", 3)
-target = PacketLengthDependency("target")
-target.addDependency("456", 3)
-mt.collectPLD(source, target)
-mt.generateCode()
-mt.testPrint()
-mt.codeFile()
+#mt = MessageTemplate("test.py", "test", "/test/", "scapy")
+#mt.testPrint()
+#fl = FieldLengthDependency("source", "target")
+#fl.addSourceLen(2)
+#fl.addTargetLen(4)
+#mt.collectFLD(fl)
+#source = PacketLengthDependency("source")
+#source.addDependency("123", 3)
+#target = PacketLengthDependency("target")
+#target.addDependency("456", 3)
+#mt.collectPLD(source, target)
+#mt.generateCode()
+#mt.testPrint()
+#mt.codeFile()
