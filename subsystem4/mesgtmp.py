@@ -115,7 +115,7 @@ class MessageTemplate():
         self.inc()
 
         # Code for the target class
-        lin = "class TargerPacket(Packet):" 
+        lin = "class TargetPacket(Packet):" 
         self.Dic[self.count] = lin
         self.inc()
         self.Dic[self.count] = ""
@@ -153,13 +153,13 @@ class MessageTemplate():
 
         # Add all additional fields to source
         for x in range(1, len(self.sourceFieldList)):
-            lin = "SourcePaacket.add_ShortFields('%s', %d)" % (self.sourceFieldList[x], self.sourceFieldLenL[x])
+            lin = "SourcePacket.add_ShortFields('%s', %d)" % (self.sourceFieldList[x], self.sourceFieldLenL[x])
             self.Dic[self.count] = lin
             self.inc()
 
         # Add all additional fields to target
         for x in range(1, len(self.targetFieldList)):
-            lin = "SourcePaacket.add_ShortFields('%s', %d)" % (self.targetFieldList[x], self.targetFieldLenL[x])
+            lin = "TargetPacket.add_ShortFields('%s', %d)" % (self.targetFieldList[x], self.targetFieldLenL[x])
             self.Dic[self.count] = lin
             self.inc()
 
