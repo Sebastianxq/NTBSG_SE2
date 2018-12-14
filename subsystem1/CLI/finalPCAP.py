@@ -1,5 +1,6 @@
 import subprocess
 import xml.etree.ElementTree as ET
+import xml.dom.minidom
 
 #need to write down exactly what the session needs to do !!!
 class PCAP:
@@ -34,23 +35,27 @@ class PCAP:
 
         pdml = open(finalPath, "r")
         pdmlLine = pdml.read()
-        print pdmlLine
         root = ET.fromstring(pdmlLine)
 
-        #Reads only the proto lines
-        #import xml.etree.ElementTree as ET
-
-        #for child in root:
-        #    print child.tag, child.attrib
-
-        #protoTest = ET.parse(finalPath)
-        #protoRoot = protoTest.getroot()
-
-        #for field in protoRoot:
-        #    print field.proto
+        #debugging, outputs the pdml to console
+        print pdmlLine
 
 
-        #debugging
+
+        xml = xml.dom.minidom.parse(finalPath)  # or xml.dom.minidom.parseString(xml_string)
+        pretty = xml.toprettyxml()
+        protoList = list()
+        for proto in pretty.split("\n"):
+            if "<proto " in proto:
+                protoField = proto.strip()
+                protoList.append(protoField)
+
+                #debugging
+                #print protoField
+
+        #print pretty
+
+        #debugging for proto capture
         #print root
         #xml = xml.dom.minidom.parse(xml_fname)  # or xml.dom.minidom.parseString(xml_string)
         #pretty_xml_as_string = xml.toprettyxml()
