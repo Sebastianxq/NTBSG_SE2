@@ -1,6 +1,6 @@
 <h1>Instruction to Run NTSBG</h1>
 
-To run the program an user needs to first install a few dependencies for it to work as intended. Please ensure that you have already had the following installed into your system. <b>YOU MUST INSTALL GRAPHVIZ PRIOR TO INSTALLING PYDOT</b>
+To run the program, an user needs to first install some external dependencies for it to function as intended. Please ensure that you have already had the following programs and libraries installed into your system prior to running the NTSBG system. <b>YOU MUST INSTALL GRAPHVIZ PRIOR TO INSTALLING PYDOT</b>
 * msys2
 * pip
 * tshark
