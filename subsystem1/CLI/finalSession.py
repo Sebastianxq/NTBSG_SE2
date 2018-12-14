@@ -1,5 +1,7 @@
+from finalPCAP import PCAP
+import subprocess
+import xml.etree.ElementTree as ET
 
-#Do i take in the pdml or do I just send it to stage 2
 class Session:
 
     #New session object as defined within the srs and sdd
@@ -22,24 +24,9 @@ class Session:
     def addFilter(self, filter):
         self.filterList.append(filter)
 
+testPcap = PCAP("testPcap", "no file")
+testPcap.convertToPdml()
+print testPcap
+testSession = Session("test","A session used to showcase CLI functionality")
 
-
-
-
-
-#imports for gtk GUI, unused at the moment
-#import gi
-#gi.require_version('Gtk', '3.0')
-#from gi.repository import Gtk
-
-
-#goes at the end
-#unused during this version
-#sessionBuilder = Gtk.Builder()
-#sessionBuilder.add_from_file("Session_GUI.glade") #placeholder at the moment
-#sessionBuilder.connect_signals(Session())
-
-#window = sessionBuilder.get_object("window1")
-#window.show_all()
-
-#Gtk.main()
+print testSession

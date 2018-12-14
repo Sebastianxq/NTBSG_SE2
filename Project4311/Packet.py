@@ -1,16 +1,21 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Dec  8 19:27:29 2018
-
-@author: peter
-"""
-
 class packet:
     def __init__(self, packetName, packetSize):
         self.packetName = packetName
         self.packetSize = packetSize
         
-    def remove():
+    def getPacketName(self):
+        return self.packetName
     
-    def filterOut():
+    def getPacketSize(self):
+        temp = (int)(self.packetSize)
+        return temp
+    
+tempName = raw_input("Please enter packet name: ")
+tempSize = int(raw_input("Please enter packet size: "))
+
+p1 = packet(tempName,tempSize)
+
+p1.getPacketName()
+
+p1.getPacketSize()
         
