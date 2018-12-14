@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Dec 10 11:18:16 2018
+ @author: peter
+"""
+
 import subprocess
 import xml.etree.ElementTree as ET
 
@@ -37,5 +43,3 @@ class PCAP:
         # XML documentation for python
         # https://docs.python.org/2/library/xml.etree.elementtree.html
         return root
-
-
