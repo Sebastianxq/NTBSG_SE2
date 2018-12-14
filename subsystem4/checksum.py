@@ -16,14 +16,13 @@ class Checksum():
     def addRelationship(self, fn):
         if not fn in self.FieldName:
             self.addFieldName(fn)
-        print("Added relationship")
-        self.testPrint()
+        
 
     # Removing a relationship if it is in the list
     def removeRelationship(self, fn):
         if fn in self.FieldName:
             x = self.FieldName.index(fn)
-            print(x)
+            
             del self.FieldName[x]
 
     # For testing print a
