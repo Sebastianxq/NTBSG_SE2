@@ -15,12 +15,12 @@
 import subprocess
 import xml.etree.ElementTree as ET
 def pcapToPdmlConverter(dissectorPath, pcapPath, workspacePath):
-    dissectorPath = "C:\\Program Files\\Wireshark\\tshark.exe"
+    #dissectorPath = "C:\\Program Files\\Wireshark\\tshark.exe"
 
-    pcapPath = "C:\\Users\\alien\\Desktop\\SE2-Team-3-Net-Tool\\lightweightTest.pcap"
+    #pcapPath = "C:\\Users\\alien\\Desktop\\SE2-Team-3-Net-Tool\\lightweightTest.pcap"
 
     #Please be careful that this location points to a folder and ends with "\\"
-    workspacePath = 'C:\\Users\\alien\\Desktop\\SE2-Team-3-Net-Tool\\'
+    #workspacePath = "C:\\Users\\alien\\Desktop\\SE2-Team-3-Net-Tool\\"
     process = subprocess.Popen([dissectorPath, "-r", pcapPath, "-T", "pdml"], stdout=subprocess.PIPE)
     finalPath = workspacePath+"PDMLDoc.pdml"
     pdml = open(finalPath, "wb")
