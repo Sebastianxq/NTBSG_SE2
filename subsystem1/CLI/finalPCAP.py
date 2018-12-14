@@ -29,13 +29,15 @@ class PCAP:
         process = subprocess.Popen([dissectorPath, "-r", pcapPath, "-T", "pdml"], stdout=subprocess.PIPE)
         finalPath = workspacePath + "PDMLDoc.pdml"
         pdml = open(finalPath, "wb")
+        print process.stdout.read()
         pdml.write(process.stdout.read())
         pdml.close()
 
         pdml = open(finalPath, "r")
         root = ET.fromstring(pdml.read())
 
-        print root
+        #debugging
+        #print root
         #xml = xml.dom.minidom.parse(xml_fname)  # or xml.dom.minidom.parseString(xml_string)
         #pretty_xml_as_string = xml.toprettyxml()
 
