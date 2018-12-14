@@ -1,4 +1,6 @@
 from finalPCAP import PCAP
+from finalMessageType import messageType
+from finalFilter import filter
 import subprocess
 import xml.etree.ElementTree as ET
 
@@ -26,7 +28,26 @@ class Session:
 
 testPcap = PCAP("testPcap", "no file")
 testPcap.convertToPdml()
-print testPcap
-testSession = Session("test","A session used to showcase CLI functionality")
 
-print testSession
+testFilter = filter("ipx only", "ipx")
+
+testMessageType = messageType("nameIsTest","name=test")
+
+#testPcap.convertToPdml()
+#print testPcap
+
+testSession = Session("test","A session used to showcase CLI functionality")
+pdml = testPcap.convertToPdml()
+testSession.addPDML(pdml)
+testSession.addFilter(testFilter)
+testSession.addMessageType(testMessageType)
+
+#print testSession.sessionPDML
+print testSession.description
+print testSession.filterList
+print testSession.SessionName
+print testSession.messageTypeList
+
+
+
+#print testSession
