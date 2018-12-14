@@ -179,6 +179,24 @@ class MessageTemplate():
     # Return the completed code
     def retCode(self):
         return self.Dic
+        
+    # Save output code to file
+    def codeFile(self):
+        if (self.count > 0):
+            ind = self.msgTemplateName.find('.py')
+            print(ind)
+            fn = self.msgTemplateName 
+            if (ind < 0):
+                fn += '.py'
+            fn = self.destFolderPath + fn
+            print fn
+            codeF = open(fn, "w")
+            for key, val in self.Dic.items():
+                codeF.write(val)
+                codeF.write("\n")
+
+            codeF.close()
+            print("File done")
     # Test print
     def testPrint(self):
         print("Msg Template name is %s" % self.msgTemplateName)
@@ -192,7 +210,7 @@ class MessageTemplate():
         for key, val in self.Dic.items():
             print key, " ", val
 
-mt = MessageTemplate("test.py", "test", "/test", "scapy")
+mt = MessageTemplate("test.py", "test", "/test/", "scapy")
 mt.testPrint()
 fl = FieldLengthDependency("source", "target")
 fl.addSourceLen(2)
@@ -205,4 +223,4 @@ target.addDependency("456", 3)
 mt.collectPLD(source, target)
 mt.generateCode()
 mt.testPrint()
-mt.dicPrint()
+mt.codeFile()
