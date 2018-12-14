@@ -1,11 +1,13 @@
+from node import *
+from edge import *
+import pydot
 class StateMachine:
-    import pydot
-    from node import Node
-    from edge import Edge
     import sys
     sys.path.append('../Helpers/')
     import wiresharkValidation
-    def __init__(self, nodeList, edgeList):
+    def __init__(self, nodeList):
+        self.nodeList = []
+        self.edgeList = []
         nodeCounter = 0
         edgeCounter = 0
         prevNode = None
@@ -17,7 +19,7 @@ class StateMachine:
             #}
             self.nodeList.append(nodeTemp)
             if prevNode is not None:
-                edgeTemp = Edge(edgeCounter, nodeTemp["index"], nodeTemp["index"], "")
+                edgeTemp = Edge(edgeCounter, prevNode.nodeID, nodeTemp.nodeID, "")
                 #edgeTemp = {
                     #"edgeID": edgeCounter,
                     #"sourceID": nodeTemp["index"],
@@ -33,9 +35,9 @@ class StateMachine:
     def renderStateMachine(self):
         graph = pydot.Dot(graph_type='graph')
         for node in self.nodeList:
-            graph.add_node(pydot.Node(node[name]))
+            graph.add_node(pydot.Node(node.nodeName))
         for edge in self.edgeList:
-            graph.add_edge(pydot.Edge(self.nodeList[edge["sourceID"]], self.nodeList[edge["destID"]]))
+            graph.add_edge(pydot.Edge(self.nodeList[edge.sourceNodeID].nodeName, self.nodeList[edge.destNodeID].nodeName))
         graph.write_png('currentGraph.png')
 
     def addNode(self, nodeName):
